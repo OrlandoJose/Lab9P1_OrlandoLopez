@@ -62,13 +62,34 @@ public class Lab9P1_OrlandoLopez {
                     }
                 }break;
                 case 2:{
-                    int t=Integer.parseInt(JOptionPane.showInputDialog("Ingrese las filas de la matriz"));
+                    int t=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la matriz"));
                     char [][]m=LlenarMatriz(t);
                     String Imprimir=mostrarMatriz(m);
                     JOptionPane.showMessageDialog(null,"La matriz original es:\n"+Imprimir);
-                    
-                        
-                    
+                    char zombi='Z';
+                    char humano='H';
+                    char muro='M';
+                    for(int i=0;i<m.length;i++){
+                        for(int j=0;j<m[i].length;j++){
+                            
+                            if(m[i+1][j]==zombi){
+                                m[i][j]=zombi;
+                            }
+                            if(m[i-1][j]==zombi){
+                                m[i][j]=zombi;
+                            } 
+                            if(m[i][j-1]==zombi){
+                                m[i][j]=zombi;
+                            }
+                            if(m[i][j+1]==zombi){
+                                m[i][j]=zombi;
+                            }
+                                                        if(m[i][j]==zombi&&i>0||j>0||j>t-1||i>t-1){
+                                }
+                        }                       
+                    }
+                    String Imprimir2=mostrarMatriz(m);
+                    JOptionPane.showMessageDialog(null,"la matriz es:\n"+Imprimir2);
                 }break;
                 case 3:{                    
                 }break;
@@ -123,7 +144,7 @@ public class Lab9P1_OrlandoLopez {
             String acum=" ";      
         for(int i=0;i<mat.length;i++) {
             for(int j=0;j<mat[i].length;j++) {
-                acum+=mat[i][j]+"\t ";
+                acum+="["+mat[i][j]+"]"+"\t ";
             }
             acum+="\n";
         }
