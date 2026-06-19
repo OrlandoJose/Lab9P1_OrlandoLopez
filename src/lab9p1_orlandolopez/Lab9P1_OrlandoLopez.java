@@ -69,27 +69,47 @@ public class Lab9P1_OrlandoLopez {
                     char zombi='Z';
                     char humano='H';
                     char muro='M';
-                    for(int i=0;i<m.length;i++){
-                        for(int j=0;j<m[i].length;j++){
-                            
-                            if(m[i+1][j]==zombi){
-                                m[i][j]=zombi;
-                            }
-                            if(m[i-1][j]==zombi){
-                                m[i][j]=zombi;
-                            } 
-                            if(m[i][j-1]==zombi){
-                                m[i][j]=zombi;
-                            }
-                            if(m[i][j+1]==zombi){
-                                m[i][j]=zombi;
-                            }
-                                                        if(m[i][j]==zombi&&i>0||j>0||j>t-1||i>t-1){
+                    int cambio=1;
+                    while(cambio>0){
+                        cambio=0;
+                        for(int i=0;i<m.length;i++){
+                            for(int j=0;j<m[i].length;j++){
+                                if(m[i][j]==humano){  
+                                    if(i>0 && m[i-1][j]==zombi){
+                                        m[i][j]=zombi;
+                                        cambio++;
+                                    }
+                                    if(i<t-1&&m[i+1][j]==zombi){
+                                        m[i][j]=zombi;
+                                        cambio++;
+                                    } 
+                                    if(j>0&&m[i][j-1]==zombi){
+                                        m[i][j]=zombi;
+                                        cambio++;
+                                    }
+                                    if(j<t-1&& m[i][j+1]==zombi){
+                                        m[i][j]=zombi;
+                                        cambio++;
+                                    }
                                 }
-                        }                       
+                        }   
+                    }
                     }
                     String Imprimir2=mostrarMatriz(m);
-                    JOptionPane.showMessageDialog(null,"la matriz es:\n"+Imprimir2);
+                    int cont=0;
+                    for(int i=0;i<m.length;i++){
+                        for(int j=0;j<m[i].length;j++){
+                            if(humano==m[i][j]){
+                                cont++;
+                            }  
+                            }
+                        }
+                    if(cont==0){
+                     JOptionPane.showMessageDialog(null,"Los humanos NO ganaron,la matriz es:\n"+Imprimir2);   
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Los humanos ganan!,la matriz es:\n"+Imprimir2); 
+                    }
+                
                 }break;
                 case 3:{                    
                 }break;
